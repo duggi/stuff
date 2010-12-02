@@ -1,0 +1,19 @@
+.bubbly-wrap {
+  position: relative;
+}
+.bubbly {
+  padding: 5px;
+  background: #000;
+  background: rgba(0,0,0,.85);
+  color: #fff !important;
+  position: absolute;
+  bottom: 30px;
+  right: -20px;
+  z-index: 9999;
+  max-width: 100px;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  font-size: 10px;
+}
+
