@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html>
+<head><title>javascript scoper</title></head>
+<body>
+
+
+
+
+
+
+
+
+<script>
+var make = "foo";
+var c = console;
+
+
+// new function()
+var CAR = function() {
+
+  // PROTECTED
+  var c = console;
+  var manufacturer = "honda";
+  var make = "mazda";
+
+  return {
+    make: "TIMMY",
+    getManu: function() {
+      return manu;
+    },
+    getMake: function() {
+      console.log(this);
+      return this.make;
+    },
+    init: function() {
+      c.log(make);
+    },
+    seat: function() {
+      var color = 'brown';
+      return {
+        pullSeatBack: function() {
+          // do something
+        }
+      }
+
+
+
+    }
+  }
+}();
+
+
+
+var KAR = CAR;
+//  KAR.make = "JONNY";
+var KAR2 = CAR;
+var KAR3 = CAR;
+
+
+
+
+
+// ---------------------------------------------- GO
+
+CAR.init();
+c.log(make);
+c.log('getter' + CAR.getMake());
+c.log(window.CAR);
+c.log('KAR make = ' + KAR.getMake());
+c.log(KAR.make);
+c.log(KAR2.make);
+
+
+</script>
+
+</body>
+</html>
+
