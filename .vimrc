@@ -1,15 +1,15 @@
 " Last update: Tue Mar 26 09:34:18 AM Eastern Standard Time 2002
 
 " ===================================================================
-" Default
-" ===================================================================
+" DEFAULT
+
 set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 behave mswin
 
+
 " ===================================================================
-" Options
-" ===================================================================
+" OPTIONS
 
   set   nobackup
   set   backspace=2
@@ -83,7 +83,7 @@ endif
 
 " ===================================================================
 " DOUG
-" ===================================================================
+
   set   nocindent
   set   noautoindent
   set   nosmartindent
@@ -96,10 +96,8 @@ endif
   map <F5>        :.!date<CR>
 
 
-
-
 " ===================================================================
-" java
+" JAVA
 
 if has("win32")
   autocmd BufRead *.java set makeprg=C:\Java\apache-ant-1.7.0\bin\ant.bat\ -emacs\ build
@@ -122,7 +120,7 @@ endif
 
 
 " ===================================================================
-" folding
+" FOLDING
 
 " set foldmethod=indent
   set foldmethod=marker
@@ -133,7 +131,7 @@ endif
 
 
 " ===================================================================
-" plugin variables
+" PLUGIN VARIABLES
 
 if has("win32")
   let Grep_Cygwin_Find=1 " grep.vim
@@ -141,14 +139,16 @@ else
   set grepprg=grep\ -n\ $*\ /dev/null
 endif
 
+
 " ===================================================================
-" Change spacing modes
+" CHANGE SPACING MODES
+
 map \M <ESC>:set noexpandtab tabstop=4 softtabstop=4 shiftwidth=4 nolist<CR>
 map \m <ESC>:set expandtab tabstop=8 softtabstop=2 shiftwidth=2<CR>
 
+
 " ===================================================================
-" Autocommands
-" ===================================================================
+" AUTOCOMMANDS
 
 if has("autocmd") && exists("+omnifunc")
 autocmd Filetype *
@@ -157,9 +157,10 @@ autocmd Filetype *
     \ endif
 endif
 
+
 " ===================================================================
-" Abbreviations
-" ===================================================================
+" ABBREVIATIONS
+
   iab YDATE <C-R>=strftime("%a %b %d %X %z %Y")<CR>
   iab VV // vi:noexpandtab:ts=2:nolist
   iab VW <%-- vi:set noexpandtab ts=2 nolist: --%>
@@ -171,6 +172,7 @@ endif
   iab cosnt         const
   iab tempalte      template
   iab porperty      property
+
 " Text Typos
   iab teh           the
 
@@ -181,9 +183,10 @@ endif
 " Spelling
   cab asp           :w<CR>:!aspell -e -c %<CR>:e<CR><CR>
 
+
 " ===================================================================
-" Colorization
-" ===================================================================
+" COLORIZATION
+
 if has("gui_running")
 " color darkrobot
   color desert
@@ -204,9 +207,9 @@ else
  endif
 endif
 
+
 " ===================================================================
-" Mappings
-" ===================================================================
+" MAPPINGS
 
 " The backslash ('\') is the only(?) unmapped key, so this is the best
 " key to start mappings with as this does not take away a command key.
@@ -215,24 +218,29 @@ endif
 "     ,L  = "Last update" - replace old time stamp with a new one
 "           preserving whitespace and using internal "strftime" command:
 "           requires the abbreviation  "YDATE"
+
   map <Leader>L 1G/Last update:\s*/e+1<CR>CYDATE<ESC>
   map <Leader><Leader>L 1G/Last change:\s*/e+1<CR>CYDATE<ESC>
 
 " 'A' (a.vim) plugin mappings
   map <Leader>a :A<cr>
+
 " 'BufExplorer' plugin mappings
 map <silent> <unique> <Leader>b :BufExplorer<CR>
 "map <silent> <unique> <Leader>bs :SBufExplorer<CR>
 "map <silent> <unique> <Leader>bv :VSBufExplorer<CR>
 " Allow the . to execute once for each line of a visual selection
   vnoremap . :normal .<CR>
+
 " Tags
   nmap <Leader>t :!(cd %:p:h;ctags *.[ch] *.hpp *.cpp)&
+
 " Command Make will call make and then cwindow which
 " opens a 3 line error window if any errors are found.
 " if no errors, it closes any open cwindow.
   :command -nargs=* Make make <args> | cwindow 3
   :map <Leader>j :Make<cr>
+
 " GNU id-utils
   map _u :call ID_search()<Bar>execute "/\\<" . g:word . "\\>"<CR>
   map _n :n<Bar>execute "/\\<" . g:word . "\\>"<CR>
@@ -258,8 +266,10 @@ map <silent> <unique> <Leader>b :BufExplorer<CR>
 
 " Retab
   map _R mz:set noet<CR>:set ts=4<CR>:retab!<CR>:set ts=2<CR>:set et<CR>:retab<CR>:set ts=8<CR>:%s/\s\+$//<CR>'z
+
 " Clear trailing spaces
   map _S mz:%s/\s\+$//<CR>'z
+
 " map _N mz:%s/^/\=strpart(line(".")."     ",0,5)'z
 
 " taglist
@@ -271,6 +281,7 @@ map <silent> <unique> <Leader>b :BufExplorer<CR>
 
 " ===================================================================
 " dbext Connection Profiles
+
 let g:dbext_default_profile_my='type=MYSQL:user=root:passwd='
 let g:dbext_default_profile_pg='type=PGSQL:user=postgres:passwd='
 
@@ -278,11 +289,14 @@ let g:dbext_default_profile_pg='type=PGSQL:user=postgres:passwd='
 "let g:dbext_default_use_sep_result_buffer = 1
 " size of Result buffer window (default is 5)
 let g:dbext_default_buffer_lines = 9
+
 " display command in Result window
 let g:dbext_default_display_cmd_line = 1
 
+
 " ===================================================================
-" HTML (un)escaping
+" HTML (UN)ESCAPING
+
 function HtmlEscape()
   silent s/&/\&amp;/eg
   silent s/</\&lt;/eg
@@ -297,8 +311,7 @@ endfunction
 
 
 " ===================================================================
-" ASCII tables - you may need them some day
-" ===================================================================
+" ASCII TABLES - YOU MAY NEED THEM SOME DAY
 "
 " 001005: In need of an ASII table?  Perl is your friend:
 "         perl -e 'while($i++<256) { print chr($i); }'
